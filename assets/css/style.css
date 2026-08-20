@@ -1,0 +1,192 @@
+/* Ten plik odpowiada za wygląd i responsywność strony StudyFlow. */
+
+/* box-sizing sprawia, że padding i border mieszczą się w ustawionej szerokości elementu. */
+* {
+    box-sizing: border-box;
+}
+
+/* Podstawowy wygląd całej strony. */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f5f7;
+    color: #222;
+}
+
+/* Nagłówek panelu użytkownika. */
+header {
+    padding: 20px;
+    background-color: #234a73;
+    color: white;
+}
+
+header h1 {
+    margin-top: 0;
+}
+
+header form {
+    margin-top: 12px;
+}
+
+/* Flex układa panele obok siebie, a flex-wrap pozwala przenosić je do następnego wiersza. */
+.dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+/* Wspólny wygląd białych paneli. */
+.panel {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-form-panel {
+    flex: 1;
+    min-width: 300px;
+}
+
+.task-list-panel {
+    flex: 2;
+    min-width: 350px;
+}
+
+.tip-panel {
+    flex-basis: 100%;
+}
+
+form div,
+fieldset {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* Wspólny wygląd pól formularza i list rozwijanych. */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+fieldset {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+fieldset label {
+    display: inline-block;
+    margin-right: 14px;
+}
+
+/* Podstawowy wygląd przycisków. */
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #234a73;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #183653;
+}
+
+button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+/* Pojedyncza karta jednego zadania. */
+.task-card {
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background-color: #fafafa;
+}
+
+.task-card h3 {
+    margin-top: 0;
+}
+
+.task-card form {
+    display: inline-block;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+#title-counter {
+    display: block;
+    margin-top: 5px;
+}
+
+#title-error {
+    color: #b00020;
+}
+
+.auto-hide-message {
+    flex-basis: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #e4f5e7;
+}
+
+/* Element z atrybutem hidden ma być całkowicie niewidoczny. */
+[hidden] {
+    display: none !important;
+}
+
+/* Media query: na ekranach do 768 px zmieniamy układ na wersję mobilną. */
+@media (max-width: 768px) {
+    /* Na telefonie panele ustawiamy jeden pod drugim. */
+    .dashboard-content {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    .panel,
+    .task-form-panel,
+    .task-list-panel,
+    .tip-panel {
+        width: 100%;
+        min-width: 0;
+    }
+
+    header {
+        padding: 15px;
+    }
+
+    fieldset label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 7px;
+    }
+
+    .task-card form {
+        display: block;
+        margin-right: 0;
+    }
+}
